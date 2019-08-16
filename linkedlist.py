@@ -4,12 +4,20 @@ class ListNode(object):
         self.next = next
 
 def printNode(node):
+    """
+    :type node: ListNode
+    :rtype: integer
+    """
     while node:
         print(node.val, end=" ")
         node = node.next
     print()
 
 def createLinkedList(val):
+    """
+    :type val: list
+    :rtype: ListNode
+    """
     head = tail = ListNode(val[0])
     for i in range(1,len(val)):
         tail.next = ListNode(val[i])
