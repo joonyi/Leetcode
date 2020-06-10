@@ -15,5 +15,19 @@ class Solution(object):
 
         return max(dp)
 
+    def lengthOfLIS2(self, nums):
+        import bisect
+        # Although the elements are not correct, but the length is correct
+        a = []
+        for num in nums:
+            i = bisect.bisect_left(a, num)  # the return index partition left < num, right >= num
+            if i == len(a):  # new index bigger than the rightmost num
+                a.append(num)
+            else:
+                a[i] = num  # element has been changed, but the sub's length has not changed.
+
+        return len(a)
+
 nums = [10,9,2,5,3,7,101,18]
-print(Solution().lengthOfLIS(nums))
+nums = [8, 2, 5, 1, 6, 7, 9, 3]
+print(Solution().lengthOfLIS2(nums))

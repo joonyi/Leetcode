@@ -3,6 +3,12 @@ class ListNode(object):
         self.val = val
         self.next = next
 
+class RandomPointerNode(object):
+    def __init__(self, val, next, random):
+        self.val = val
+        self.next = next
+        self.random = random
+
 def printNode(node):
     """
     :type node: ListNode

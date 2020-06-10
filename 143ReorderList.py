@@ -11,50 +11,112 @@ class Solution(object):
         :type head: ListNode
         :rtype: None Do not return anything, modify head in-place instead.
         """
-        p1 = head
-        length = 0
-        tail = None
-        while p1:
-            front = p1.next
-            p1.next = tail  # reverse
-            tail = p1
-            p1 = front
-            length += 1
+        # TLE
+        if not head:
+            return head
 
-        # return tail
-        if length <= 2:
-            return
+        tail = head
+        cnt = 0
+        while tail.next != None:
+            cnt += 1
+            tail = tail.next
 
-        q = tail.next
-        p1 = head
-        p2 = head.next
-        while p2 != q:
-            p1.next = tail
-            tail.next = p1
-            p2 = p1.next
-            tail = q
-            q = q.next
+        start = head
+        while start.next != tail and start != tail:
+            tail.next = start.next
+            start.next = tail
+            cur = tail.next
+            while cur.next != tail:
+                cur = cur.next
+            start = tail.next
+            tail = cur
+
+        tail.next = None
+
+        return head
 
     def reorderList2(self, head):
-        x = head
-        nodes = []
-        while x:
-            nodes.append(x)
-            x = x.next
+        # Failed in python2.7
+        # Splits in place a list in two halves, the first half is >= in size than the second.
+        # @return A tuple containing the heads of the two halves
+        def _splitList(head):
+            fast = head
+            slow = head
+            while fast and fast.next:
+                slow = slow.next
+                fast = fast.next
+                fast = fast.next
 
-        i, j = 1, len(nodes) - 1
-        while i < j:
-            nodes[i], nodes[j] = nodes[j], nodes[i]
-            i += 1
-            j -= 1
-        for k in range(len(nodes)-1):
-            nodes[k].next = nodes[k+1]
-        nodes[len(nodes)-1].next = None
+            middle = slow.next
+            slow.next = None
+
+            return head, middle
+
+        # Reverses in place a list.
+        # @return Returns the head of the new reversed list
+        def _reverseList(head):
+
+            last = None
+            currentNode = head
+
+            while currentNode:
+                nextNode = currentNode.next
+                currentNode.next = last
+                last = currentNode
+                currentNode = nextNode
+
+            return last
+
+        # Merges in place two lists
+        # @return The newly merged list.
+        def _mergeLists(a, b):
+
+            tail = a
+            head = a
+
+            a = a.next
+            while b:
+                tail.next = b
+                tail = tail.next
+                b = b.next
+                if a:
+                    a, b = b, a
+
+            return head
+
+        if not head or not head.next:
+            return
+
+        a, b = _splitList(head)
+        b = _reverseList(b)
+        head = _mergeLists(a, b)
         return head
-Not working
 
-A = [1,2,3,4,5]
+    def reorderList3(self, head):
+        if not head:
+            return head
+
+        pi = pj = head
+
+        while pj.next and pj.next.next:  # j goes as twice as i.
+            pi, pj = pi.next, pj.next.next
+
+        cur = pi.next  # start from 2nd half.
+        node = pi.next = None
+        while cur:  # reverse 2nd half.
+            next = cur.next
+            cur.next = node
+            node = cur
+            cur = next
+
+        cur1, cur2 = head, node
+        while cur2:  # insert
+            next1, next2 = cur1.next, cur2.next
+            cur1.next, cur2.next = cur2, next1
+            cur1, cur2 = next1, next2
+
+
+A = [1,2,3,4]
+# A = [1,2,3,4,5]
 head = createLinkedList(A)
-printNode(head)
-root = Solution().reorderList2(head)
-printNode(root)
+printNode(Solution().reorderList2(head))

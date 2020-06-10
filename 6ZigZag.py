@@ -11,57 +11,27 @@ class Solution(object):
         :type numRows: int
         :rtype: str
         """
-        col = len(s) // numRows
-        col = col + (col - 1)
-        skip = numRows - 2
-        zig = [[0 for _ in range(col)] for _ in range(numRows)]
-        for i in range(numRows):
-            k = 0
-            # while j < len(s):
-            for j in range(i, len(s), numRows + 1):
-                zig[i][k] = s[j]
-                k += 1 + skip
-
-        return zig
-
-    def convert2(self, s, numRows):
-        col = len(s) // numRows
-        col += (col) * (len(s) % numRows)
-        reset = numRows + numRows - 2
-        if reset == 0 or col <= 0:
+        if numRows == 1:
             return s
-        zig = [[0 for _ in range(col)] for _ in range(numRows)]
-        i, j = 0, 0
-        r, c = 0, -1
-        dir = 1
-        while i < len(s):
-            if i % reset == 0:
-                dir = 1
-                if c < col - 1:
-                    c += 1
 
-            zig[r][c] = s[i]
-            r += dir * 1
-            if r == numRows:
-                r = numRows - 2
-                dir = -1
-                c += 1
-            i += 1
-
-        res = ''
-        for i in range(len(zig)):
-            for j in range(len(zig[i])):
-                if zig[i][j] != 0:
-                    res += zig[i][j]
-
-        return res
+        rows = [''] * min(numRows, len(s))
+        curRow = 0
+        goingDown = False
+        for c in s:
+            rows[curRow] += c
+            if curRow == 0 or curRow == numRows - 1:
+                goingDown = not goingDown
+            curRow += 1 if goingDown else -1
+        res = []
+        for row in rows:
+            res.append(row)
+        return ''.join(res)
 
 
 
-# s = "PAYPALISHIRING"
+# s = "PAYPALISHIRING" # "PINALSIGYAHRPI"
 # numRows = 4
-# s = "A"
-# numRows = 2
-s = "ABCDEF"
-numRows = 2
-print(Solution().convert2(s, numRows))
+s = "PAYPALISHIRING" # "PAHNAPLSIIGYIR"
+numRows = 3
+# s, numRows = "A", 2
+print(Solution().convert(s, numRows))

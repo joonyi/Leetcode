@@ -88,10 +88,27 @@ class Solution(object):
             return memo[word]
         return dfs(s, {})
 
-# s = "12"
-s = "226" # 3
-# s = "01"
-# s = "4757562545844617494555774581341211511296816786586787755257741178599337186486723247528324612117156948"
-print(Solution().numDecodings4(s))
+    def numDecodings5(self, s):
+        # TLE
+        def helper(s, k):
+            if k == 0:
+                return 1
+            i = len(s) - k
+            if s[i] == '0':
+                return 0
+            res = helper(s, k - 1)
+            if k >= 2 and int(s[i : i+2]) <= 26:
+                res += helper(s, k - 2)
+            return res
+
+        return helper(s, len(s))
+
+
+
+s = "12" # 2
+# s = "226" # 3
+# s = "01" # 0
+# s = "4757562545844617494555774581341211511296816786586787755257741178599337186486723247528324612117156948" # 589824
+print(Solution().numDecodings5(s))
 
 

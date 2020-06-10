@@ -19,6 +19,6 @@ class Solution(object):
                 result[num] = i
 
 
-nums = [2,7,11,15]
+nums = [2,11,15,7]
 target = 9
 print(Solution().twoSum(nums, target))

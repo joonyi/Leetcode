@@ -15,7 +15,7 @@ class Solution(object):
         """
         if not nums2:
             return None
-        diff = [-1] * (max(nums2)+1)
+        diff = [-1] * (max(nums2)+1) # index represents nums1, value represents nxt greater
         res = [-1] * len(nums1)
         stack = []
         for i in range(len(nums2)-1, -1, -1):

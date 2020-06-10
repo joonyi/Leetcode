@@ -71,8 +71,8 @@ class MyStack2(object):
 # Your MyStack object will be instantiated and called as such:
 obj = MyStack()
 print(obj.push(1))
-# print(obj.push(2))
-# print(obj.push(3))
-# print(obj.top())
+print(obj.push(2))
+print(obj.push(3))
+print(obj.top())
 print(obj.pop())
 print(obj.empty())

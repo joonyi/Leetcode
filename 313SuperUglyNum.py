@@ -26,11 +26,10 @@ class Solution(object):
         :type primes: List[int]
         :rtype: int
         """
-        ugly = [0] * n
+        ugly = [float('inf')] * n
         ugly[0] = 1
         idx = [0] * len(primes) # keep track latest idx of prime[i]*ugly_smaller > ugly_latest
         for i in range(1, n):
-            ugly[i] = 2 ** 32 - 1
             for j in range(len(primes)):
                 x = primes[j]*ugly[idx[j]]
                 ugly[i] = min(ugly[i], x)
@@ -57,6 +56,19 @@ class Solution(object):
 
         return ugly[-1]
 
+    def nthSuperUglyNumber3(self, n, primes):
+        ugly, dp, index, ugly_nums = 1, [1], [0] * len(primes), [1] * len(primes)
+        for i in range(1, n):
+            # compute possibly ugly numbers and update index
+            for j in range(len(primes)):
+                if ugly_nums[j] == ugly:
+                    ugly_nums[j] = dp[index[j]] * primes[j]
+                    index[j] += 1
+            # get the minimum
+            ugly = min(ugly_nums)
+            dp.append(ugly)
+        return dp[-1]
+
 n = 12
 primes = [2,7,13,19]
-print(Solution().nthSuperUglyNumber(n, primes))
+print(Solution().nthSuperUglyNumber3(n, primes))

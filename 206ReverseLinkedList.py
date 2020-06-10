@@ -29,5 +29,5 @@ class Solution(object):
 A = [1, 2, 3, 4, 5]
 head = createLinkedList(A)
 printNode(head)
-head = Solution().reverseList2(head)
+head = Solution().reverseList(head)
 printNode(head)
