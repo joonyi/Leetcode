@@ -27,5 +27,5 @@ class Solution(object):
         return x
 
 word1, word2 = "horse", "ros"
-word1, word2 = "dinitrophenylhydrazine", "benzalphenylhydrazone"
+# word1, word2 = "dinitrophenylhydrazine", "benzalphenylhydrazone"
 print(Solution().minDistance(word1, word2))

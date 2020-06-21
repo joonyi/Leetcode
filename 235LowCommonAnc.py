@@ -47,7 +47,8 @@ class Solution(object):
                 # We have found the split point, i.e. the LCA node.
                 return root
 
+# This treenode is not treenode in root. Can't create test case
 p, q = TreeNode(2), TreeNode(8)
 A = [6,p,q,0,4,7,9,None,None,3,5]
-root = TreeNode().BuildTree(A)
-print(Solution().lowestCommonAncestor2(root, p, q))
+root = TreeNode(None).BuildTree(A)
+Solution().lowestCommonAncestor2(root, p, q).printLevelorder()

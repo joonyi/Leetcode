@@ -46,5 +46,7 @@ class TreeNode(object):
                     nextLevel.append(node.right)
             ret.append(currentNode)
             level = nextLevel
+
+
         print(ret)
 

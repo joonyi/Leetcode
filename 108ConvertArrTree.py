@@ -13,42 +13,34 @@ class Solution(object):
         """
         if not nums:
             return None
+        mid = len(nums) // 2
+        left = mid - 1
+        right = mid + 1
+        root = node = TreeNode(nums[mid])
+        while left > -1:
+            node.left = TreeNode(nums[left])
+            node = node.left
+            left -= 1
+        node = root
+        while right < len(nums):
+            node.right = TreeNode(nums[right])
+            node = node.right
+            right += 1
+        return root
+
+    def sortedArrayToBST2(self, nums):
+        if not nums:
+            return None
 
         mid = len(nums) // 2
         root = TreeNode(nums[mid])
-        i, j = mid - 1, mid + 1
-
-        if len(nums) == 1:
-            return root
-        elif len(nums) == 2:
-            root.left = TreeNode(nums[i])
-            return root
-
-        while i >= 0:
-            self.Insert(root, nums[i])
-            i -= 1
-        while j < len(nums):
-            self.Insert(root, nums[j])
-            j += 1
+        root.left = self.sortedArrayToBST2(nums[:mid])
+        root.right = self.sortedArrayToBST2(nums[mid + 1:])
 
         return root
 
-    def Insert(self, root, z):
-        tail = None
-        node = TreeNode(z)
-        x = root
-        while x != None:  # x travel to leaf
-            tail = x
-            if z < x.val:
-                x = x.left
-            else:
-                x = x.right
-
-        if node.val < tail.val:  # insert node
-            tail.left = node
-        else:
-            tail.right = node
-
-Not working
 nums = [0,1,2,3,4,5]
-print(Solution().sortedArrayToBST(nums))
+# nums = [-10,-3,0,5,9]
+
+root = Solution().sortedArrayToBST2(nums)
+root.printLevelorder()
