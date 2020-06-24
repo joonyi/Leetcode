@@ -22,54 +22,6 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[str]]
         """
-        if not root: return None
-        queue = [root]
-        level = []
-        while queue:
-            nxt_level = []
-            tmp = []
-            for node in queue:
-                if node == None:
-                    tmp.append(None)
-                    continue
-                else:
-                    tmp.append(node.val)
-
-                if node.left:
-                    nxt_level.append(node.left)
-                else:
-                    nxt_level.append(None)
-
-                if node.right:
-                    nxt_level.append(node.right)
-                else:
-                    nxt_level.append(None)
-            queue = nxt_level
-            level.append(tmp)
-
-        if any(level[-1]) == False:
-            level.pop()
-
-        res = [["" for _ in range(2**len(level) - 1)] for _ in range(len(level))]
-        n = len(res)
-
-        self.fill(root, res, 0, 0)
-if
-    def fill(self, node, res, level, pos):
-        if not node:
-            return
-        left_padding, spacing = 2 ** (rows - level - 1) - 1, 2 ** (rows - level) - 1
-        index = left_padding + pos * (spacing + 1)
-        print(level, index, node.val)
-        res[level][index] = str(node.val)
-        self.fill(node.left, level + 1, pos << 1)
-        self.fill(node.right, level + 1, (pos << 1) + 1)
-
-    def printTree2(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[List[str]]
-        """
 
         def get_height(node):
             if not node:
@@ -96,7 +48,7 @@ if
 # A = [1,2,3,None,4]
 # A = [1,2,None]
 A = [1,2,3,None,4]
-root = TreeNode().BuildTree(A)
-print(Solution().printTree2(root))
+root = TreeNode(None).BuildTree(A)
+print(Solution().printTree(root))
 
 
