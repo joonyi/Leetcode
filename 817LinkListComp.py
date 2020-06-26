@@ -7,7 +7,7 @@ Return the number of connected components in G, where two values are connected i
 consecutively in the linked list.
 """
 
-from linkedlist import *
+from LinkedList import *
 class Solution(object):
     def numComponents(self, head, G):
         """

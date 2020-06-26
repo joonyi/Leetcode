@@ -1,25 +1,6 @@
 from collections import defaultdict
 class Solution(object):
     def findOrder(self, numCourses, prerequisites):
-        """
-        :type numCourses: int
-        :type prerequisites: List[List[int]]
-        :rtype: List[int]
-        """
-        # Idea DFS to detect cycle, if no cycle, able to do topological sort
-        WHITE = 1
-        GRAY = 2
-        BLACK = 3
-        # Create the adjacency list representation of the graph
-        adj_list = defaultdict(list)
-        # A pair [a, b] in the input represents edge from b --> a
-        for dest, src in prerequisites:
-            adj_list[src].append(dest)
-        topological_sorted_order = []
-        is_possible = True
-        # By default all vertces are WHITE
-        color = {k: WHITE for k in range(numCourses)}
-
         def dfs(node):
             nonlocal is_possible
             # Don't recurse further if we found a cycle already
@@ -38,6 +19,20 @@ class Solution(object):
             # Recursion ends. We mark it as black
             color[node] = BLACK
             topological_sorted_order.append(node)
+
+        # Idea DFS to detect cycle, if no cycle, able to do topological sort
+        WHITE = 1
+        GRAY = 2
+        BLACK = 3
+        # Create the adjacency list representation of the graph
+        adj_list = defaultdict(list)
+        # A pair [a, b] in the input represents edge from b --> a
+        for dest, src in prerequisites:
+            adj_list[src].append(dest)
+        topological_sorted_order = []
+        is_possible = True
+        # By default all vertces are WHITE
+        color = {k: WHITE for k in range(numCourses)}
 
         for vertex in range(numCourses):
             # If the node is unprocessed, then call dfs on it.

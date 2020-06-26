@@ -6,7 +6,7 @@ Add the two numbers and return it as a linked list.
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 """
 
-from linkedlist import *
+from LinkedList import *
 class Solution(object):
     def addTwoNumbers(self, l1, l2):
         """

@@ -1,7 +1,7 @@
 """
 Sort a linked list in O(n log n) time using constant space complexity.
 """
-from linkedlist import *
+from LinkedList import *
 class Solution(object):
     def sortList(self, head):
         """

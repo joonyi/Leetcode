@@ -11,7 +11,7 @@ always have a size greater than or equal parts occurring later.
 Return a List of ListNode's representing the linked list parts that are formed.
 Examples 1->2->3->4, k = 5 // 5 equal parts [ [1], [2], [3], [4], null ]
 """
-from linkedlist import *
+from LinkedList import *
 class Solution(object):
     def splitListToParts(self, root, k):
         """

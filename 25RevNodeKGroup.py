@@ -13,7 +13,7 @@ Note:
 Only constant extra memory is allowed.
 You may not alter the values in the list's nodes, only nodes itself may be changed.
 """
-from linkedlist import *
+from LinkedList import *
 class Solution(object):
     def reverseKGroup(self, head, k):
         """

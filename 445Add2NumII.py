@@ -8,7 +8,7 @@ You may assume the two numbers do not contain any leading zero, except the numbe
 Follow up:
 What if you cannot modify the input lists? In other words, reversing the lists is not allowed.
 """
-from linkedlist import *
+from LinkedList import *
 class Solution(object):
     def addTwoNumbers(self, l1, l2):
         """

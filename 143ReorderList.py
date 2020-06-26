@@ -4,7 +4,7 @@ reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
 
 You may not modify the values in the list's nodes, only nodes itself may be changed.
 """
-from linkedlist import *
+from LinkedList import *
 class Solution(object):
     def reorderList(self, head):
         """

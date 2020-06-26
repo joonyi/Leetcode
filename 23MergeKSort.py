@@ -1,7 +1,7 @@
 """
 Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
 """
-from linkedlist import *
+from LinkedList import *
 class Solution(object):
     def mergeKLists(self, lists):
         """

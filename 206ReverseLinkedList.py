@@ -1,7 +1,7 @@
 """
 Reverse a singly linked list.
 """
-from linkedlist import *
+from LinkedList import *
 class Solution(object):
     def reverseList(self, head):
         """

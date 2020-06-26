@@ -4,7 +4,7 @@ Given a non-empty, singly linked list with head node head, return a middle node 
 If there are two middle nodes, return the second middle node.
 """
 
-from linkedlist import *
+from LinkedList import *
 class Solution(object):
     def middleNode(self, head):
         """

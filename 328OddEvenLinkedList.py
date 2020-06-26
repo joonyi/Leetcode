@@ -5,7 +5,7 @@ Please note here we are talking about the node number and not the value in the n
 You should try to do it in place. The program should run in O(1) space complexity and O(nodes)
 time complexity.
 """
-from linkedlist import *
+from LinkedList import *
 class Solution(object):
     def oddEvenList(self, head):
         """

@@ -11,7 +11,7 @@ The algorithm is composed of the follow three steps which are also 3 iteration r
 3. Restore the original list and extract the duplicated nodes.
 """
 
-from linkedlist import RandomPointerNode
+from LinkedList import RandomPointerNode
 class Solution(object):
     def copyRandomList(self, head):
         """

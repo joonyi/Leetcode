@@ -3,7 +3,7 @@ Insertion sort iterates, consuming one input element each repetition, and growin
 At each iteration, insertion sort removes one element from the input data, finds the location it belongs within the sorted list, and inserts it there.
 It repeats until no input elements remain.
 """
-from linkedlist import *
+from LinkedList import *
 class Solution(object):
     def insertionSortList(self, head):
         """

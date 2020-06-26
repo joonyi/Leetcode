@@ -10,7 +10,7 @@ Could you do it in O(n) time and O(1) space?
 """
 # The idea is to construct on list from begin to middle
 # another from end to middle, then compare those two lists
-from linkedlist import *
+from LinkedList import *
 class Solution(object):
     def isPalindrome(self, head):
         slow = fast = head
