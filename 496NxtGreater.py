@@ -17,11 +17,11 @@ class Solution(object):
             return None
         diff = [-1] * (max(nums2)+1) # index represents nums1, value represents nxt greater
         res = [-1] * len(nums1)
-        stack = []
+        stack = []  # invariant of next greater value to this current value
         for i in range(len(nums2)-1, -1, -1):
             while stack and nums2[i] >= stack[-1]:
                 stack.pop()
-            if stack:
+            if stack:  # next greater entry exist
                 diff[nums2[i]] = stack[-1]
             stack.append(nums2[i])
 
@@ -30,8 +30,8 @@ class Solution(object):
 
         return res
 
-# nums1 = [4,1,2]
-# nums2 = [1,3,4,2]
-nums1 = [2,4]
-nums2 = [1,2,3,4]
+nums1 = [4,1,2]  # [-1,3,-1]
+nums2 = [1,3,4,2]
+# nums1 = [2,4]  # [3,-1]
+# nums2 = [1,2,3,4]
 print(Solution().nextGreaterElement(nums1, nums2))

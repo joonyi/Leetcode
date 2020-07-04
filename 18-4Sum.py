@@ -92,4 +92,4 @@ class Solution(object):
 
 
 nums, target = [1, 0, -1, 0, -2, 2], 0
-print(Solution().fourSum3(nums, target))
+print(Solution().fourSum(nums, target))
